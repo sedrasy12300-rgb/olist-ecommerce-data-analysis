@@ -88,8 +88,11 @@ It also includes a warning about potentially incomplete data for September 2016 
 as the dataset starts and ends during these months.
 
 Database
+
 The project uses SQLite to store the Olist datasets in a database named olist.db.
+
 The database contains tables for:
+
 Orders
 Customers
 Payments
@@ -99,17 +102,27 @@ Product Category Translations
 Reviews
 Installation and Setup
 1. Install the Dependencies
+2. 
 Open a terminal in the project directory and run:
 pip install -r requirements.txt
-2. Prepare the Database
+3. Prepare the Database
+4. 
 Make sure olist.db is available in the project directory.
-If you need to recreate the database, place the original CSV datasets in the appropriate location and run the data preparation script.
-3. Run the Dashboard
+If you need to recreate the database,
+place the original CSV datasets in the appropriate location and run the data preparation script.
+6. Run the Dashboard
+7. 
 Run the following command:
+
 streamlit run app.py
+
 Then open the local URL displayed in the terminal.
+
 Project Goal
-The goal of this project is to practice SQL-based data analysis, work with a relational database, explore e-commerce data, and present the results through an interactive dashboard.
+
+The goal of this project is to practice SQL-based data analysis,
+work with a relational database, explore e-commerce data,
+and present the results through an interactive dashboard.
 Notes
 The dashboard requires olist.db to run.
 The original CSV datasets are needed to recreate the database from the source data.
