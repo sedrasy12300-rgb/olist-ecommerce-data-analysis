@@ -102,17 +102,14 @@ Product Category Translations
 Reviews
 Installation and Setup
 1. Install the Dependencies
-2. 
-Open a terminal in the project directory and run:
+2. Open a terminal in the project directory and run:
 pip install -r requirements.txt
 3. Prepare the Database
-4. 
-Make sure olist.db is available in the project directory.
-If you need to recreate the database,
+4. Make sure olist.db is available in the project directory.
+5. If you need to recreate the database,
 place the original CSV datasets in the appropriate location and run the data preparation script.
 6. Run the Dashboard
-7. 
-Run the following command:
+7. Run the following command:
 
 streamlit run app.py
 
