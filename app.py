@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
+import kagglehub
+import os
 
 
 st.title("Olist E-Commerce Data Analysis")
