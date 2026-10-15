@@ -7,7 +7,27 @@ import kagglehub
 dataset_path = kagglehub.dataset_download(
     "olistbr/brazilian-ecommerce"
 )
+import pandas as pd
+import os
 
+db_path = "olist.db"
+
+csv_tables = {
+    "olist_orders_dataset": "olist_orders_dataset.csv",
+    "olist_order_payments_dataset": "olist_order_payments_dataset.csv",
+    "olist_customers_dataset": "olist_customers_dataset.csv",
+    "olist_order_items_dataset": "olist_order_items_dataset.csv",
+    "olist_products_dataset": "olist_products_dataset.csv",
+    "product_category_name_translation": "product_category_name_translation.csv",
+    "olist_order_reviews_dataset": "olist_order_reviews_dataset.csv",
+    "olist_sellers_dataset": "olist_sellers_dataset.csv",
+}
+
+with sql.connect(db_path) as db:
+    for table_name, file_name in csv_tables.items():
+        file_path = os.path.join(dataset_path, file_name)
+        df = pd.read_csv(file_path)
+        df.to_sql(table_name, db, if_exists="replace", index=False)
 
 st.write("Dataset files:")
 st.write(os.listdir(dataset_path))
