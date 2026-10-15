@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
-import os
+
 import kagglehub
 
 dataset_path = kagglehub.dataset_download(
@@ -29,8 +29,7 @@ with sql.connect(db_path) as db:
         df = pd.read_csv(file_path)
         df.to_sql(table_name, db, if_exists="replace", index=False)
 
-st.write("Dataset files:")
-st.write(os.listdir(dataset_path))
+
 
 st.title("Olist E-Commerce Data Analysis")
 st.write("""This application provides insights into Olist e-commerce data
