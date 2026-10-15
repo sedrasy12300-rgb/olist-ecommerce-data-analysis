@@ -1,9 +1,16 @@
-import setup
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
 import os
+import kagglehub
 
+dataset_path = kagglehub.dataset_download(
+    "olistbr/brazilian-ecommerce"
+)
+
+
+st.write("Dataset files:")
+st.write(os.listdir(dataset_path))
 
 st.title("Olist E-Commerce Data Analysis")
 st.write("""This application provides insights into Olist e-commerce data
