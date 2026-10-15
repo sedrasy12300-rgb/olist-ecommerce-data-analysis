@@ -1,21 +1,30 @@
 import zipfile
 import os
+import shutil
 
-# 1. تحديد المسارات المطلقة لمنع أخطاء السيرفر في التوجيه
+# 1. تحديد المسارات المطلقة بدقة على السيرفر
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 zip_path = os.path.join(BASE_DIR, "olist.zip")
-db_path = os.path.join(BASE_DIR, "olist.db")
 
-print("⏳ جاري التحقق من ملف قاعدة البيانات المضغوط على السيرفر...")
+# المسار المطلق والمسار المحلي المتوقع لكود app.py الأصلي
+db_absolute_path = os.path.join(BASE_DIR, "olist.db")
+db_local_path = "olist.db"
 
-# 2. فك الضغط تلقائياً إذا كان ملف الـ zip موجوداً وملف الـ db غير موجود
-if os.path.exists(zip_path) and not os.path.exists(db_path):
+print("⏳ جاري تهيئة قاعدة البيانات وفك الضغط الجذري...")
+
+# 2. فك ضغط ملف olist.zip إذا كان موجوداً
+if os.path.exists(zip_path):
     try:
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-            # فك الملف مباشرة في المجلد الرئيسي للمشروع
             zip_ref.extractall(BASE_DIR)
-        print("✅ تم فك ضغط ملف olist.db بنجاح على السيرفر!")
+        print("✅ تم فك الملف بنجاح في المسار المطلق.")
+        
+        # 3. الخدعة السحرية: نسخ الملف المفكوك إلى المسار المحلي الذي يبحث عنه كود app.py
+        if os.path.exists(db_absolute_path):
+            shutil.copy(db_absolute_path, db_local_path)
+            print("🎯 تم تأمين قاعدة البيانات وتطابق المسارات بنجاح!")
+            
     except Exception as e:
-        print(f"❌ حدث خطأ أثناء فك الضغط: {e}")
+        print(f"❌ حدث خطأ أثناء المعالجة: {e}")
 else:
-    print("🔔 ملف olist.db جاهز وموجود بالفعل، أو ملف olist.zip غير متوفر.")
+    print("🔔 ملف olist.zip غير متوفر في المستودع.")
