@@ -1,8 +1,9 @@
+import setup
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
 import os
-import setup
+
 
 st.title("Olist E-Commerce Data Analysis")
 st.write("""This application provides insights into Olist e-commerce data
