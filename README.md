@@ -1,6 +1,10 @@
 Olist E-Commerce Data Analysis
 
+🚀 Live Demo
+Explore the interactive dashboard here:
+Open the Olist E-Commerce Dashboard
 Project Overview
+https://olist-ecommerce-data-analysis-2sbdssxvphjg9hp5nwf9jb.streamlit.app/
 
 This project explores e-commerce data from Olist using Python, SQL, and data visualization tools.
 
